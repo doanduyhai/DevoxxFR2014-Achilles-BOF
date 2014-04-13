@@ -5,6 +5,7 @@ import info.archinnov.achilles.annotations.Column;
 import info.archinnov.achilles.annotations.EmbeddedId;
 import info.archinnov.achilles.annotations.Entity;
 import info.archinnov.achilles.annotations.Order;
+import info.archinnov.achilles.demo.model.TweetModel;
 import lombok.Data;
 
 @Entity(table = "timeline")
@@ -56,5 +57,9 @@ public class TimeLineEntity {
         public CompoundKey() {
 
         }
+    }
+
+    public TweetModel toModel() {
+        return new TweetModel(author, compoundKey.getTweetId(), content);
     }
 }
